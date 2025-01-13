@@ -68,7 +68,6 @@ col1, col2 = st.columns([3, 1])
 with col1:
     if st.button("Send") and user_input.strip():
         st.session_state.messages.append({"role": "user", "content": user_input.strip()})
-        user_input = ""
         
         try:
             response = requests.post(

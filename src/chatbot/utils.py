@@ -23,13 +23,17 @@ llm=ChatOpenAI(api_key=OPENAI_API_KEY, model="gpt-4o")
 
 # Initializing the Agent
 agent = initialize_agent(
-    tools,
-    llm,
+    tools=tools,
+    llm=llm,
     agent="zero-shot-react-description",
     verbose=True,
-    handle_parsing_errors=True,
+    handle_parsing_errors=True, 
     memory=memory,
     agent_kwargs={
-        'prefix': template.format(custom_instructions=custom_instructions, input='{input}', agent_scratchpad='{agent_scratchpad}'),
+        'prefix': template.format(
+            custom_instructions=custom_instructions,
+            input='{input}',
+            agent_scratchpad='{agent_scratchpad}'
+        )
     }
 )
